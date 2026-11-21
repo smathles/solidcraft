@@ -118,7 +118,8 @@ pub fn levels_along(b: &Body, plane: &solidcore_record::Plane) -> Result<[f64; 2
     };
     let (ops, _) = &*form;
     let (o, x, y) = (plane.origin, plane.x, plane.y);
-    ops.levels_along([o.x, o.y, o.z], [x.x, x.y, x.z], [y.x, y.y, y.z])
+    form.0
+        .levels_along([o.x, o.y, o.z], [x.x, x.y, x.z], [y.x, y.y, y.z])
         .map_err(|e| crate::KernelError::Invalid(format!("the body's reach along the plane's normal can't be measured: {e}")))
 }
 
